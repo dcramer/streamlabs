@@ -1,0 +1,21 @@
+.container {
+  padding: 4px;
+  color: white;
+  background: black;
+  border-radius: 10px;
+  flex: 1;
+  text-align: left;
+  min-width: 150px;
+}
+
+.subtext {
+  color: #ccc;
+}
+
+.defn {
+  font-weight: normal;
+  text-transform: lowercase;
+  float: left;
+  width: 100px;
+  color: #aaa;
+}
