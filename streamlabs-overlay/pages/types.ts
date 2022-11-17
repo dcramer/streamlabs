@@ -1,5 +1,9 @@
 export type NinaSessionData = {
+  id: string;
+  urlKey: string;
   activeTargetId: string;
+  stretchOptions: any;
+  profileName: any;
   targets: {
     id: string;
     name: string;

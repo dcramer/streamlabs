@@ -6,16 +6,21 @@ import styles from "../../styles/Widget.module.css";
 export default function SQM({ eyeSensor = 0 }: { eyeSensor?: number }) {
   const [currentValue, setValue] = useState<number | null>(null);
 
-  useInterval(() => {
-    fetch(`/api/sqm?eyeSensor=${eyeSensor}`).then(async (r) => {
-      const data = await r.json();
-      if (data.result === "OK") {
-        setValue(data.value);
-      }
-    });
-  }, 1000);
+  function update() {
+    fetch(`/api/sqm?eyeSensor=${eyeSensor}`)
+      .then(async (r) => {
+        const data = await r.json();
+        if (data.result === "OK") {
+          setValue(data.value);
+        }
+      })
+      .catch((e) => {});
+  }
 
-  if (!currentValue) return null;
+  setTimeout(update);
+  useInterval(update, 5000);
+
+  if (!currentValue) return <div className={styles.container} />;
 
   return (
     <div className={styles.container}>

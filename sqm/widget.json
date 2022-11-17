@@ -19,5 +19,14 @@
     "type": "text",
     "label": "Host",
     "value": "localhost"
-  }
+  },
+  "eyeSensor": {
+    "type": "dropdown",
+    "label": "Eye Sensor:",
+    "value": "yes",
+    "options": {
+      "0": "Left",
+      "1": "Right"
+    }
+  },
 }

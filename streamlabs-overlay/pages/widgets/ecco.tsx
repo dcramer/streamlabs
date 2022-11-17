@@ -15,21 +15,26 @@ type Data = {
 export default function Ecco() {
   const [currentData, setData] = useState<Data | null>(null);
 
-  useInterval(() => {
-    fetch("/api/ecco").then(async (r) => {
-      const data = await r.json();
-      if (data.result === "OK") {
-        setData({
-          temp: data.temp,
-          humidity: data.hum,
-          dewpoint: data.dew,
-          pressure: data.pressure,
-        });
-      }
-    });
-  }, 1000);
+  function update() {
+    fetch("/api/ecco")
+      .then(async (r) => {
+        const data = await r.json();
+        if (data.result === "OK") {
+          setData({
+            temp: data.temp,
+            humidity: data.hum,
+            dewpoint: data.dew,
+            pressure: data.pressure,
+          });
+        }
+      })
+      .catch((e) => {});
+  }
 
-  if (!currentData) return null;
+  setTimeout(update);
+  useInterval(update, 5000);
+
+  if (!currentData) return <div className={styles.container} />;
 
   // XXX: Ecco returns Farhenheit with a broken unicode character
   let temp = currentData.temp;

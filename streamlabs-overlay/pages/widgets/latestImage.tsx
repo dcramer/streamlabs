@@ -1,10 +1,11 @@
+import Image from "next/image";
 import { useState } from "react";
 import { useInterval } from "usehooks-ts";
 
 import styles from "../../styles/Widget.module.css";
 import { NinaSessionData } from "../types";
 
-export default function TargetInfo() {
+export default function LatestImage() {
   const [currentSession, setSession] = useState<NinaSessionData | null>(null);
 
   function update() {
@@ -31,24 +32,15 @@ export default function TargetInfo() {
     ? currentTarget.imageRecords[currentTarget.imageRecords.length - 1]
     : null;
 
+  if (!currentImage) return <div className={styles.container} />;
+
+  //eagle4pro0329/sessions/20221116-193142/thumbnails/7bcb12e5-bb0a-4e0d-ab82-1214836f6767.jpg
   return (
     <div className={styles.container}>
-      <div>
-        <strong className={styles.defn}>Target</strong>
-        {currentTarget.name}
-      </div>
-      {!!currentImage && (
-        <div>
-          <div className={styles.subtext}>
-            <strong className={styles.defn}>Filter</strong>
-            {currentImage.filterName}
-          </div>
-          <div className={styles.subtext}>
-            <strong className={styles.defn}>Exp</strong> {currentImage.duration}
-            s
-          </div>
-        </div>
-      )}
+      <img
+        src={`http://eagle4pro0329/sessions/${currentSession.urlKey}/thumbnails/${currentImage.id}.jpg`}
+        alt="preview"
+      />
     </div>
   );
 }

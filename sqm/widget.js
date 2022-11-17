@@ -25,6 +25,6 @@ function updateSQM() {
 window.addEventListener('onWidgetLoad', function (obj) {
   host = obj.detail.fieldData.host;
   container = $('.main-container');
-  eyeSensor = 0;
+  eyeSensor = obj.detail.fieldData.eyeSensor;
   updateSQM();
 });

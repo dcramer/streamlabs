@@ -46,26 +46,31 @@ function formatDuration(seconds: number) {
 export default function QualityInfo() {
   const [currentSession, setSession] = useState<NinaSessionData | null>(null);
 
-  useInterval(() => {
-    fetch(`/api/ninaSession`).then(async (r) => {
-      const data = await r.json();
-      setSession(data);
-    });
-  }, 1000);
+  function update() {
+    fetch(`/api/ninaSession`)
+      .then(async (r) => {
+        const data = await r.json();
+        setSession(data);
+      })
+      .catch((e) => {});
+  }
 
-  if (!currentSession) return null;
+  setTimeout(update);
+  useInterval(update, 5000);
+
+  if (!currentSession) return <div className={styles.container} />;
 
   const currentTarget = currentSession.targets.find(
     (t) => t.id === currentSession.activeTargetId
   );
 
-  if (!currentTarget) return null;
+  if (!currentTarget) return <div className={styles.container} />;
 
   const currentImage = currentTarget.imageRecords.length
     ? currentTarget.imageRecords[currentTarget.imageRecords.length - 1]
     : null;
 
-  if (!currentImage) return null;
+  if (!currentImage) return <div className={styles.container} />;
 
   return (
     <div className={styles.container}>
