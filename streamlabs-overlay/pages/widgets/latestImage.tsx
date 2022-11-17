@@ -34,7 +34,6 @@ export default function LatestImage() {
 
   if (!currentImage) return <div className={styles.container} />;
 
-  //eagle4pro0329/sessions/20221116-193142/thumbnails/7bcb12e5-bb0a-4e0d-ab82-1214836f6767.jpg
   return (
     <div className={styles.container}>
       <img
