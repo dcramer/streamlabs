@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useInterval } from "usehooks-ts";
 
 import styles from "../../styles/Widget.module.css";
-import { NinaSessionData } from "../types";
+import { NinaSessionData } from "../../types";
 
 function round(value: number) {
   return Math.round(value * 100) / 100;
