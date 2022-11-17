@@ -1,38 +1,20 @@
 import { useState } from "react";
 import { useInterval } from "usehooks-ts";
 
-import styles from "../../styles/Widget.module.css";
+import styles from "../styles/Widget.module.css";
+import { usePolling } from "./usePolling";
 
 // {"result":"OK","ecco":"Connected","temp":"9.5","hum":"59.1","dew":"1.9","pressure":"1018","temp5":"","temp6":"","temp7":"","auto5":0,"auto6":0,"auto7":2}
 
 type Data = {
   temp: string;
-  dewpoint: string;
-  humidity: string;
+  dew: string;
+  hum: string;
   pressure: string;
 };
 
 export default function Ecco() {
-  const [currentData, setData] = useState<Data | null>(null);
-
-  function update() {
-    fetch("/api/ecco")
-      .then(async (r) => {
-        const data = await r.json();
-        if (data.result === "OK") {
-          setData({
-            temp: data.temp,
-            humidity: data.hum,
-            dewpoint: data.dew,
-            pressure: data.pressure,
-          });
-        }
-      })
-      .catch((e) => {});
-  }
-
-  setTimeout(update);
-  useInterval(update, 5000);
+  const currentData = usePolling<Data>("/api/ecco");
 
   if (!currentData) return <div className={styles.container} />;
 
@@ -44,7 +26,6 @@ export default function Ecco() {
     tempUnit = "F";
   }
 
-  // TODO: can we determine Celsius or not?
   return (
     <div className={styles.container}>
       <div className={styles.subtext}>
@@ -53,8 +34,7 @@ export default function Ecco() {
       </div>
 
       <div className={styles.subtext}>
-        <strong className={styles.defn}>Humidity</strong> {currentData.humidity}
-        %
+        <strong className={styles.defn}>Humidity</strong> {currentData.hum}%
       </div>
       <div className={styles.subtext}>
         <strong className={styles.defn}>Pressure</strong> {currentData.pressure}{" "}
