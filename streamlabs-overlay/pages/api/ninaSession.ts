@@ -3,10 +3,11 @@
 
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
+import { NinaSessionData } from "../types";
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<void>
+  res: NextApiResponse<NinaSessionData | {}>
 ) {
   const r = await fetch("http://eagle4pro0329/sessions/sessions.json");
   const data = await r.json();
