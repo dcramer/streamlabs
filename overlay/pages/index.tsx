@@ -5,6 +5,7 @@ import Ecco from "../widgets/ecco";
 import LatestImage from "../widgets/latestImage";
 import QualityInfo from "../widgets/qualityInfo";
 import SQM from "../widgets/sqm";
+import Stream from "../widgets/stream";
 import TargetInfo from "../widgets/targetInfo";
 import { NinaSessionContext } from "../widgets/useNinaSession";
 import { usePolling } from "../widgets/usePolling";
@@ -14,15 +15,16 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
-      <main className={styles.main}>
-        <NinaSessionContext.Provider value={ninaSession}>
+      <NinaSessionContext.Provider value={ninaSession}>
+        <main className={styles.main}>
           <LatestImage />
           <TargetInfo />
           <QualityInfo />
           <SQM eyeSensor={0} />
           <Ecco />
-        </NinaSessionContext.Provider>
-      </main>
+        </main>
+        <Stream />
+      </NinaSessionContext.Provider>
     </div>
   );
 }
