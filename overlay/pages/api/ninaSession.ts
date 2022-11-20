@@ -1,7 +1,6 @@
 // http://eagle4pro0329/sessions/sessions.json
 // http://eagle4pro0329/sessions/20221116-193142/sessionHistory.json
 
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
 import { NINA_HOST } from "../../config";
 import { NinaSessionData } from "../../types";

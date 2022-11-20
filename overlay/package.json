@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "concurrently --kill-others \"next dev\" \"npm run rtsp\"",
     "build": "next build",
+    "rtsp": "ts-node -r dotenv/config server/rtsp.js",
     "start": "next start",
     "lint": "next lint"
   },
@@ -12,12 +13,20 @@
     "@types/node": "18.11.9",
     "@types/react": "18.0.25",
     "@types/react-dom": "18.0.9",
+    "dotenv": "^16.0.3",
     "eslint": "8.27.0",
     "eslint-config-next": "13.0.3",
+    "express": "^4.18.2",
     "next": "13.0.3",
+    "node-rtsp-stream": "^0.0.9",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "rtsp-relay": "^1.6.1",
+    "ts-node": "^10.9.1",
     "typescript": "4.9.3",
     "usehooks-ts": "^2.9.1"
+  },
+  "devDependencies": {
+    "concurrently": "^7.5.0"
   }
 }

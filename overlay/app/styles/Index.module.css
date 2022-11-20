@@ -1,0 +1,11 @@
+.main {
+  flex: 1;
+  display: flex;
+  min-height: 144px;
+  padding: 10px 10px 0;
+  gap: 20px;
+}
+
+.stream {
+  padding: 6px 10px 10px;
+}
