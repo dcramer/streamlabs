@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { NinaSessionData } from "../types";
+import { NinaSessionData } from "../../types";
 
 export const NinaSessionContext = createContext<null | NinaSessionData>(null);
 

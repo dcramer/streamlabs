@@ -1,6 +1,3 @@
-import { useState } from "react";
-import { useInterval } from "usehooks-ts";
-
 import styles from "../styles/Widget.module.css";
 import { usePolling } from "./usePolling";
 

@@ -1,15 +1,16 @@
-import Head from "next/head";
-import styles from "../styles/Home.module.css";
-import { NinaSessionData } from "../types";
-import Ecco from "../widgets/ecco";
-import LatestImage from "../widgets/latestImage";
-import QualityInfo from "../widgets/qualityInfo";
-import SQM from "../widgets/sqm";
-import TargetInfo from "../widgets/targetInfo";
-import { NinaSessionContext } from "../widgets/useNinaSession";
-import { usePolling } from "../widgets/usePolling";
+"use client";
 
-export default function Home() {
+import styles from "./styles/Home.module.css";
+import { NinaSessionData } from "../types";
+import Ecco from "./components/ecco";
+import LatestImage from "./components/latestImage";
+import QualityInfo from "./components/qualityInfo";
+import SQM from "./components/sqm";
+import TargetInfo from "./components/targetInfo";
+import { NinaSessionContext } from "./components/useNinaSession";
+import { usePolling } from "./components/usePolling";
+
+export default function Index() {
   const ninaSession = usePolling<NinaSessionData>(`/api/ninaSession`);
 
   return (
