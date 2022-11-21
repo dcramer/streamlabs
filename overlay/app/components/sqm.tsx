@@ -59,15 +59,12 @@ export default function SQM({ eyeSensor = 0, ...props }: Props) {
     <div className={styles.container} {...props}>
       <div className={styles.subtext}>
         <strong className={styles.defn}>SQM</strong>
-        {currentData.value}
-      </div>
-      <div className={styles.subtext}>
-        <strong className={styles.defn}>Bortle</strong>
         <div style={{ display: "inline-block" }}>
+          <div>{currentData.value}</div>
           <div className={styles[`bortle-${bortleScale}`]}>
             {bortleToName(bortleScale)}
           </div>
-          <span>(approx {bortleScale})</span>
+          <div>(approx {bortleScale})</div>
         </div>
       </div>
     </div>
