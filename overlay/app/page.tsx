@@ -18,14 +18,26 @@ export default function Index() {
     <NinaSessionContext.Provider value={ninaSession}>
       <div className={styles.container}>
         <main className={styles.main}>
-          <LatestImage style={{ width: 380 }} />
-          <TargetInfo style={{ flex: 1 }} />
-          <QualityInfo style={{ flex: 1 }} />
-          <SQM eyeSensor={0} style={{ flex: 1 }} />
-          <Ecco />
+          <div style={{ width: 380 }}>
+            <LatestImage />
+          </div>
+          <div>
+            <TargetInfo />
+          </div>
+          <div>
+            <QualityInfo />
+          </div>
+          <div>
+            <SQM eyeSensor={0} />
+          </div>
+          <div>
+            <Ecco />
+          </div>
         </main>
-        <section className={styles.stream} style={{ width: 380 }}>
-          <Stream style={{ width: 380 }} />
+        <section className={styles.sidebar} style={{ width: 380 }}>
+          <div>
+            <Stream style={{ width: 380 }} />
+          </div>
         </section>
       </div>
     </NinaSessionContext.Provider>

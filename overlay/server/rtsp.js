@@ -10,6 +10,8 @@ const { proxy, scriptUrl } = require("rtsp-relay")(app);
 const handler = proxy({
   url: RTSP_STREAM,
   verbose: true,
+  additionalFlags: ["-vf", `scale=2*iw:-1,crop=iw/2.5:ih/2.5`, "-q", "1"],
+  transport: "tcp",
 });
 
 // the endpoint our RTSP uses

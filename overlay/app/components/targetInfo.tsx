@@ -20,17 +20,17 @@ export default function TargetInfo(props: React.HTMLProps<HTMLDivElement>) {
   return (
     <div className={styles.container} {...props}>
       <div>
-        <strong className={styles.defn}>Target</strong>
-        {currentTarget.name}
+        <span className={styles.defn}>Target</span>
+        <strong>{currentTarget.name}</strong>
       </div>
       {!!currentImage && (
         <div>
           <div className={styles.subtext}>
-            <strong className={styles.defn}>Filter</strong>
+            <span className={styles.defn}>Filter</span>
             {currentImage.filterName || "n/a"}
           </div>
           <div className={styles.subtext}>
-            <strong className={styles.defn}>Int. Time</strong>{" "}
+            <span className={styles.defn}>Int. Time</span>{" "}
             {formatDuration(
               currentTarget.imageRecords.reduce((a, b) => a + b.duration, 0)
             )}
