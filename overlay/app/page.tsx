@@ -28,10 +28,10 @@ export default function Index() {
             <QualityInfo />
           </div>
           <div>
-            <SQM eyeSensor={0} />
+            <Ecco />
           </div>
           <div>
-            <Ecco />
+            <SQM eyeSensor={0} />
           </div>
         </main>
         <section className={styles.sidebar} style={{ width: 380 }}>

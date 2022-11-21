@@ -7,12 +7,7 @@ type Props = React.HTMLProps<HTMLCanvasElement> & {
   url: string;
 };
 
-export default function JsmpegPlayer({
-  url,
-  options,
-  overlayOptions,
-  ...props
-}: Props) {
+export default function JsmpegPlayer({ url, ...props }: Props) {
   const playerRef = useRef<any | null>(null);
 
   const handleRef = useCallback(
